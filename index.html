@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Valentine 💌</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    overflow: hidden;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    width: 350px;
+    animation: fadeIn 1.5s ease;
+}
+
+input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 8px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background: white;
+    color: #ff4e8b;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff4e8b;
+    color: white;
+    transform: scale(1.05);
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div id="step1">
+        <h2>💖 Маленький вопрос...</h2>
+        <input type="text" id="name" placeholder="Твоё имя">
+        <input type="number" id="age" placeholder="Твой возраст">
+        <br>
+        <button onclick="nextStep()">Продолжить</button>
+    </div>
+
+    <div id="step2" class="hidden">
+        <h2 id="greeting"></h2>
+        <p>Как настроение? 💭</p>
+
+        <button onclick="finish()">Хорошо 😊</button>
+        <button onclick="finish()">Очень хорошо 😍</button>
+        <button onclick="finish()">Сижу скучаю... завтра 14 февраля 💔</button>
+    </div>
+
+</div>
+
+<script>
+function nextStep() {
+    let name = document.getElementById("name").value;
+    let age = document.getElementById("age").value;
+
+    if(name === "" || age === "") {
+        alert("Заполни имя и возраст 💕");
+        return;
+    }
+
+    document.getElementById("greeting").innerText =
+        "Привет, " + name + " 💖 Тебе " + age + " лет!";
+
+    document.getElementById("step1").classList.add("hidden");
+    document.getElementById("step2").classList.remove("hidden");
+}
+
+function finish() {
+    window.location.href = "https://surblie.github.io/open-me-/";
+}
+</script>
+
+</body>
+</html>
